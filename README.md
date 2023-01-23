@@ -29,6 +29,12 @@ lighthouse --version
 ```
 
 ## Run Geth as a service on Goerli
+Before creating config file, we need JWT token
+```
+sudo mkdir -p /var/lib/ethereum
+openssl rand -hex 32 | tr -d "\n" | sudo tee /var/lib/ethereum/jwttoken
+sudo chmod +r /var/lib/ethereum/jwttoken
+```
 Create geth service config file  
 ```
 sudo nano /etc/systemd/system/geth.service
@@ -59,6 +65,15 @@ sudo systemctl start geth.service
 Check service status
 ```
 sudo systemctl status geth.service
+```
+
+## Run Lighthouse as a service on Goerli
+
+## Open the RPC API to interact with your node
+Enter the Geth JavaScript console
+```
+cd ~
+geth attach .ethereum/goerli/geth.ipc
 ```
 
 
