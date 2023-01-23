@@ -122,10 +122,12 @@ geth attach .ethereum/goerli/geth.ipc
 ![image](https://user-images.githubusercontent.com/19230666/214074790-6b9b2956-ebd4-40cc-a787-845193309332.png)
 
 From the Geth JS console, we can retrieve data from the blockchain.  
-For example, let's get the last block number
+For example, we can extract balance of an account
 ```
-> eth.lastBlock
+web3.fromWei(eth.getBalance('0xc22F7bF6c1c7Ed5220eb7Be4F0Cd8a69e9fBa0F9'), 'ether')
 ```
+![image](https://user-images.githubusercontent.com/19230666/214076279-2c7edd5d-d3eb-417f-96ef-d732ecc52169.png)
+
 
 
 
