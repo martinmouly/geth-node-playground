@@ -10,6 +10,8 @@ Check Geth was installed correctly
 ```
 geth version
 ```
+![image](https://user-images.githubusercontent.com/19230666/214073549-091bb770-0230-443e-b2ad-492144506163.png)
+
 
 
 ## Installing Lighthouse as our consensus client  
@@ -27,6 +29,7 @@ Check lighthouse was installed correctly
 ```
 lighthouse --version
 ```
+![image](https://user-images.githubusercontent.com/19230666/214073651-fbb214c1-f413-4655-8488-75352f3b3901.png)
 
 ## Run Geth as a service on Goerli
 Before creating config file, we need JWT token
@@ -64,8 +67,10 @@ sudo systemctl start geth.service
 ```
 Check service status
 ```
-sudo systemctl status geth.service
+sudo systemctl status geth
 ```
+![image](https://user-images.githubusercontent.com/19230666/214073786-b09ba723-d8d1-4deb-bfd9-3937348018ad.png)
+
 
 ## Run Lighthouse as a service on Goerli  
 The process is the same to run lighthouse a service. The config file to run lighthouse as a service on Goerli is as follows : 
@@ -95,8 +100,9 @@ WantedBy=multi-user.target
 After reloading daemon and starting service, the lighthouse should be running.
 Check lighthouse service status 
 ```
-sudo systemctl status geth.service
+sudo systemctl status lighthouse
 ```
+![image](https://user-images.githubusercontent.com/19230666/214074152-d702de8e-f3a9-40dd-8f21-8ac51297be8f.png)
 
 ## Check service log journal
 To check the complete logs of both services (ideal to check sync, or debugging in general) 
@@ -106,12 +112,14 @@ sudo journalctl -f -u geth
 ```
 sudo journalctl -f -u lighthouse
 ```
+
 ## Interact with the node
 Enter the Geth JavaScript console
 ```
 cd ~
 geth attach .ethereum/goerli/geth.ipc
 ```
+
 From the Geth JS console, we can retrieve data from the blockchain.  
 For example, let's get the last block number
 ```
