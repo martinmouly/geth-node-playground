@@ -95,7 +95,7 @@ WantedBy=multi-user.target
 After reloading daemon and starting service, the lighthouse should be running.
 Check lighthouse service status 
 ```
-
+sudo systemctl status geth.service
 ```
 
 ## Check service log journal
