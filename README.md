@@ -56,6 +56,10 @@ Reload daemon and start service
 sudo systemctl daemon-reload
 sudo systemctl start geth.service
 ```
+Check service status
+```
+sudo systemctl status geth.service
+```
 
 
 
