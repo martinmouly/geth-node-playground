@@ -10,7 +10,6 @@ Check Geth was installed correctly
 ```
 geth version
 ```
-![image](https://user-images.githubusercontent.com/19230666/214062788-0d3a518b-5b9b-4c67-8376-cc572ff1e669.png)
 
 
 ## Installing Lighthouse as our consensus client  
@@ -28,7 +27,35 @@ Check lighthouse was installed correctly
 ```
 lighthouse --version
 ```
-![image](https://user-images.githubusercontent.com/19230666/214063956-57a95f0a-2368-4143-b8df-ff105f6841d0.png)
 
 ## Run Geth as a service on Goerli
+Create geth service config file  
+```
+sudo nano /etc/systemd/system/geth.service
+```  
+Geth config file : 
+```
+[Unit]
+Description=Go Ethereum Client - Geth (Goerli)
+After=network.target
+Wants=network.target
+
+[Service]
+User=administrateur1
+Type=simple
+Restart=always
+RestartSec=5
+TimeoutStopSec=180
+ExecStart=/usr/local/bin/geth  --goerli --http --authrpc.jwtsecret=/var/lib/ethereum/jwttoken
+
+[Install]
+WantedBy=default.target
+```
+Reload daemon and start service
+```
+sudo systemctl daemon-reload
+sudo systemctl start geth.service
+```
+
+
 
