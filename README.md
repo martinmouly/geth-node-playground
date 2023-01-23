@@ -115,7 +115,7 @@ geth attach .ethereum/goerli/geth.ipc
 From the Geth JS console, we can retrieve data from the blockchain.  
 For example, let's get the last block number
 ```
-
+> eth.lastBlock
 ```
 
 
