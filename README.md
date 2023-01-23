@@ -67,13 +67,55 @@ Check service status
 sudo systemctl status geth.service
 ```
 
-## Run Lighthouse as a service on Goerli
+## Run Lighthouse as a service on Goerli  
+The process is the same to run lighthouse a service. The config file to run lighthouse as a service on Goerli is as follows : 
+```
+[Unit]
+Description=Lighthouse Ethereum Client Beacon Node (Prater)
+Wants=network-online.target
+After=network-online.target
 
-## Open the RPC API to interact with your node
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/local/bin/lighthouse bn \
+    --network goerli \
+    --datadir /var/lib/lighthouse \
+    --http \
+    --execution-endpoint http://127.0.0.1:8551 \
+    --metrics \
+    --validator-monitor-auto \
+    --checkpoint-sync-url https://goerli.checkpoint-sync.ethdevops.io \
+    --execution-jwt /var/lib/ethereum/jwttoken
+
+[Install]
+WantedBy=multi-user.target
+```
+After reloading daemon and starting service, the lighthouse should be running.
+Check lighthouse service status 
+```
+
+```
+
+## Check service log journal
+To check the complete logs of both services (ideal to check sync, or debugging in general) 
+```
+sudo journalctl -f -u geth
+```
+```
+sudo journalctl -f -u lighthouse
+```
+## Interact with the node
 Enter the Geth JavaScript console
 ```
 cd ~
 geth attach .ethereum/goerli/geth.ipc
+```
+From the Geth JS console, we can retrieve data from the blockchain.  
+For example, let's get the last block number
+```
+
 ```
 
 
