@@ -119,12 +119,15 @@ Enter the Geth JavaScript console
 cd ~
 geth attach .ethereum/goerli/geth.ipc
 ```
+![image](https://user-images.githubusercontent.com/19230666/214074790-6b9b2956-ebd4-40cc-a787-845193309332.png)
 
 From the Geth JS console, we can retrieve data from the blockchain.  
 For example, let's get the last block number
 ```
 > eth.lastBlock
 ```
+
+
 
 
 
