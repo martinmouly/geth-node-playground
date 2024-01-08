@@ -1,4 +1,4 @@
-# td4-geth-node
+# Running a node on Goerli
 
 ## Installing Geth  
 Retrieve Geth from repo and install
